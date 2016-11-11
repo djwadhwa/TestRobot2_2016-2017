@@ -2,7 +2,7 @@ package org.usfirst.frc.team948.robot;
 
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.AHRS;
+import com.kauailabs.navx.frc.AHRS;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
