@@ -30,11 +30,13 @@ public class RobotMap {
 	public static Victor frontLeftMotor = new Victor(2);
 	public static Victor backRightMotor = new Victor(1);
 	public static Victor frontRightMotor = new Victor(0);
+	
 	public static AHRS robotAHRS = new AHRS(SPI.Port.kMXP);
 	public static AHRSGyro robotGyro = new AHRSGyro();
 	public static AHRSAccelerometer robotAccelerometer = new AHRSAccelerometer();
+	
 	//To check values
-	public static Encoder rightEncoder = new Encoder(0,1,false,EncodingType.k4X);
+	public static Encoder rightEncoder = new Encoder(2,31);
 	//To check values
-	public static Encoder leftEncoder = new Encoder(2,3,false,EncodingType.k4X);
+	public static Encoder leftEncoder = new Encoder(0,1);
 }
