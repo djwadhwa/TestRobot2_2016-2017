@@ -3,9 +3,11 @@ package org.usfirst.frc.team948.robot;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Encoder;
 
-import org.usfirst.frc.team948.utilities.AHRSGyro;
-
 import com.kauailabs.navx.frc.AHRS;
+
+import org.usfirst.frc.team948.utilities.AHRSGyro;
+import org.usfirst.frc.team948.utilities.AHRSAccelerometer;
+
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -30,6 +32,7 @@ public class RobotMap {
 	public static Victor frontRightMotor = new Victor(0);
 	public static AHRS robotAHRS = new AHRS(SPI.Port.kMXP);
 	public static AHRSGyro robotGyro = new AHRSGyro();
+	public static AHRSAccelerometer robotAccelerometer = new AHRSAccelerometer();
 	//To check values
 	public static Encoder rightEncoder = new Encoder(0,1,false,EncodingType.k4X);
 	//To check values
