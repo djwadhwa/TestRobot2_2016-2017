@@ -1,4 +1,4 @@
-package org.usfirst.frc.team948.utilies;
+package org.usfirst.frc.team948.utilities;
 
 import org.usfirst.frc.team948.robot.RobotMap;
 
