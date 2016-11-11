@@ -5,8 +5,9 @@ import org.usfirst.frc.team948.robot.RobotMap;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.PIDSource;
 
-public class AHRSGyro extends GyroBase implements Gyro{
+public class AHRSGyro extends GyroBase implements Gyro, PIDSource{
 	
 	private static AHRS ahrs = RobotMap.robotAHRS;
 	private double previosAngle;
