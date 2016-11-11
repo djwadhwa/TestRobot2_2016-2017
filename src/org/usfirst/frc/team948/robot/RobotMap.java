@@ -36,7 +36,7 @@ public class RobotMap {
 	public static AHRSAccelerometer robotAccelerometer = new AHRSAccelerometer();
 	
 	//To check values
-	public static Encoder rightEncoder = new Encoder(2,31);
+	public static Encoder rightEncoder = new Encoder(2,3);
 	//To check values
 	public static Encoder leftEncoder = new Encoder(0,1);
 }
