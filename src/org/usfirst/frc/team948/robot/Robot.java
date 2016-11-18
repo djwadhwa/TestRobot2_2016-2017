@@ -18,7 +18,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 
-//I.O.
 public class Robot extends IterativeRobot {
 
 	public static DS2016 oi;
