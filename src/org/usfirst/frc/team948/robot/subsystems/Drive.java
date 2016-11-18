@@ -28,6 +28,17 @@ public class Drive extends Subsystem{
 		RobotMap.frontLeftMotor.disable();
 		RobotMap.frontRightMotor.disable();
 	}
+	public void turnToHeading(double finalHeading, double power){
+		double error = PID.getError();
+		double setPoint = PID.getSetpoint;
+		double initError = 0;
+		if(initError * error < 0){
+			SmartDashboard.putNumber("Brake Power", power);
+			
+		}
+		initError = error;
+		drive.rawTankDrive(power, -power);
+	}
 
 
 }
