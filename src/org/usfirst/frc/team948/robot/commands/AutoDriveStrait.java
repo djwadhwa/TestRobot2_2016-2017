@@ -18,7 +18,7 @@ public class AutoDriveStrait extends Command {
 	
 	Timer timer = new Timer();
 	
-	boolean commandStop = true;
+	final int constructorValue;
 	
 	final double power;
 	
@@ -30,6 +30,7 @@ public class AutoDriveStrait extends Command {
 		requires(drive);
 		this.power = power;
 		this.time = time;
+		constructorValue = 0;
 		distance = powerToSpeed*power*time;
 		
 	}
@@ -38,6 +39,7 @@ public class AutoDriveStrait extends Command {
 		requires(Robot.drive);
 		this.time = time;
 		this.distance = distance;
+		constructorValue = 1;
 		power = distance/(time*powerToSpeed);
 	}
 	
@@ -45,6 +47,7 @@ public class AutoDriveStrait extends Command {
 		requires(drive);
 		this.power = power;
 		this.distance = distance;
+		constructorValue = 2
 		time = distance/(power*powerToSpeed);
 	}
 	
@@ -52,6 +55,7 @@ public class AutoDriveStrait extends Command {
 		requires(Robot.drive);
 		this.distance = distance;
 		power = defualtPower;
+		constructorValue = 3;
 		time = distance/(power*powerToSpeed);
 	}
 	
@@ -59,6 +63,7 @@ public class AutoDriveStrait extends Command {
 		requires(Robot.drive);
 		this.time = time;
 		power = defualtPower;
+		constructorValue = 4;
 		distance = powerToSpeed*power*time;
 	}
 	
@@ -66,7 +71,7 @@ public class AutoDriveStrait extends Command {
 		requires(Robot.drive);
 		time = defualtTime;
 		this.power = power;
-		commandStop = false;
+		constructorValue = 5;
 		distance = Double.MAX_VALUE;	
 	}
 	
@@ -93,7 +98,8 @@ public class AutoDriveStrait extends Command {
     }
     
     protected boolean isFinished() {
-        return (timer.get() > time) && commandStop;
+    	boolean output = constructorValue == 5 ? false : timer.get() > time;
+        return output;
     }
     
     protected void end() {
