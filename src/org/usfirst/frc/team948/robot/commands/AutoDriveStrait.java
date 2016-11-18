@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.Timer;
 
 import org.usfirst.frc.team948.subsytems.Drive;
 
+import org.usfirst.frc.team948.robot.Robot;
+
 public class AutoDriveStrait extends Command {
 	
 	static final double powerToSpeed = 1;
@@ -33,7 +35,7 @@ public class AutoDriveStrait extends Command {
 	}
 	
 	public AutoDriveStrait(double distance,double time){
-		requires(drive);
+		requires(Robot.drive);
 		this.time = time;
 		this.distance = distance;
 		power = distance/(time*powerToSpeed);
@@ -47,21 +49,21 @@ public class AutoDriveStrait extends Command {
 	}
 	
 	public AutoDriveStrait(double distance){
-		requires(drive);
+		requires(Robot.drive);
 		this.distance = distance;
 		power = defualtPower;
 		time = distance/(power*powerToSpeed);
 	}
 	
 	public AutoDriveStrait(double time){
-		requires(drive);
+		requires(Robot.drive);
 		this.time = time;
 		power = defualtPower;
 		distance = powerToSpeed*power*time;
 	}
 	
 	public AutoDriveStait(double power){
-		requires(drive);
+		requires(Robot.drive);
 		time = defualtTime;
 		this.power = power;
 		commandStop = false;
@@ -69,14 +71,14 @@ public class AutoDriveStrait extends Command {
 	}
 	
 	public AutoDriveStrait(){
-		requires(drive);
+		requires(Robot.drive);
 		time = defualtTime;
 		power = defualtPower;
 		distance = powerToSpeed*power*time;
 	}
 	
     protected void initialize() {
-    	drive.rawStop();
+    	Robot.drive.rawStop();
     	timer.reset();
     	timer.start();
     }
@@ -87,7 +89,7 @@ public class AutoDriveStrait extends Command {
     	 if(remainingTime <= 1){
     		 newPower = newPower * remainingTime;
     	 }
-    	 drive.rawTankDrive(newPower, newPower);
+    	 Robot.drive.rawTankDrive(newPower, newPower);
     }
     
     protected boolean isFinished() {
