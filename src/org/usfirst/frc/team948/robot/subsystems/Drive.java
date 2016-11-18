@@ -3,9 +3,14 @@ package org.usfirst.frc.team948.robot.subsystems;
 import org.usfirst.frc.team948.robot.RobotMap;
 import org.usfirst.frc.team948.robot.commands.ManualDrive;
 
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drive extends Subsystem{
+	
+	private double p, i, d;
+	PIDController distancePID = new PIDController(p, i, d, null, null);
+	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
