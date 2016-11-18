@@ -1,17 +1,20 @@
 package org.usfirst.frc.team948.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team948.subsystems.Drive;
+
+import edu.wpi.first.wpilibj.Timer;
+
+import org.usfirst.frc.team948.robot.RobotMap;
 
 public class AutoDriveStrait extends Command {
 	
 	static final double powerToSpeed = 1;
 	
-	static final double runToTime = 1;
-	
 	static final double defualtPower = 1;
 	
 	static final double defualtTime = 1;
+	
+	Timer timer = new Timer();
 	
 	boolean commandStop = true;
 	
@@ -20,8 +23,6 @@ public class AutoDriveStrait extends Command {
 	final double time;
 	
 	final double distance;
-	
-	double runCount = 0;
 	
 	public AutoDriveStrait(double power,double time){
 		requires(drive);
@@ -75,16 +76,22 @@ public class AutoDriveStrait extends Command {
 	}
 	
     protected void initialize() {
-    	
+    	drive.rawStop();
+    	timer.reset();
+    	timer.start();
     }
     
     protected void execute() {
-    	drive.rawTankDrive(power, power);
-    	runCount++;
+    	double remainingTime = time - timer.get();
+    	double newPower = power;
+    	 if(remainingTime <= 1){
+    		 newPower = newPower * remainingTime;
+    	 }
+    	 drive.rawTankDrive(newPower, newPower);
     }
     
     protected boolean isFinished() {
-        return (runToTime*runCount > time) && commandStop;
+        return (timer.get() > time) && commandStop;
     }
     
     protected void end() {
