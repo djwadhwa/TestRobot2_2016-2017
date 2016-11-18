@@ -21,9 +21,10 @@ public class AutoDriveStrait extends Command {
 	
 	final double distance;
 	
-	double runCount;
+	double runCount = 0;
 	
 	public AutoDriveStrait(double power,double time){
+		requires(drive);
 		this.power = power;
 		this.time = time;
 		distance = powerToSpeed*power*time;
@@ -31,30 +32,35 @@ public class AutoDriveStrait extends Command {
 	}
 	
 	public AutoDriveStrait(double distance,double time){
+		requires(drive);
 		this.time = time;
 		this.distance = distance;
 		power = distance/(time*powerToSpeed);
 	}
 	
 	public AutoDriveStrait(double distance,double power){
+		requires(drive);
 		this.power = power;
 		this.distance = distance;
 		time = distance/(power*powerToSpeed);
 	}
 	
 	public AutoDriveStrait(double distance){
+		requires(drive);
 		this.distance = distance;
 		power = defualtPower;
 		time = distance/(power*powerToSpeed);
 	}
 	
 	public AutoDriveStrait(double time){
+		requires(drive);
 		this.time = time;
 		power = defualtPower;
 		distance = powerToSpeed*power*time;
 	}
 	
 	public AutoDriveStait(double power){
+		requires(drive);
 		time = defualtTime;
 		this.power = power;
 		commandStop = false;
@@ -62,10 +68,29 @@ public class AutoDriveStrait extends Command {
 	}
 	
 	public AutoDriveStrait(){
+		requires(drive);
 		time = defualtTime;
 		power = defualtPower;
 		distance = powerToSpeed*power*time;
 	}
 	
-	
+    protected void initialize() {
+    	
+    }
+    
+    protected void execute() {
+    	drive.rawTankDrive(power, power);
+    	runCount++;
+    }
+    
+    protected boolean isFinished() {
+        return (runToTime*runCount > time) && commandStop;
+    }
+    
+    protected void end() {
+    }
+    
+    protected void interrupted() {
+    	end();
+    }
 }
