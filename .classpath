@@ -8,5 +8,9 @@
 	<classpathentry kind="lib" path="C:/Users/kidla/wpilib/java/current/lib/NetworkTables-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/kidla/wpilib/java/current/lib/WPILib.jar"/>
 	<classpathentry kind="lib" path="C:/Users/kidla/wpilib/java/current/lib/WPILib-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gregoryquick/Desktop/TMP HOLE O&apos; PLUGIN GARBAGE/FRCWPIV5/eclipse/plugins/edu.wpi.first.wpilib.plugins.core_0.1.0.201603020231.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gregoryquick/Desktop/TMP HOLE O&apos; PLUGIN GARBAGE/FRCWPIV5/eclipse/plugins/edu.wpi.first.wpilib.plugins.cpp_0.1.0.201603020231.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gregoryquick/Desktop/TMP HOLE O&apos; PLUGIN GARBAGE/FRCWPIV5/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_0.1.0.201603020231.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gregoryquick/Desktop/TMP HOLE O&apos; PLUGIN GARBAGE/FRCWPIV5/eclipse/plugins/edu.wpi.first.wpilib.plugins.riolog_0.1.0.201603020231.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
