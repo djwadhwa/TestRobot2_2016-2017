@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import edu.wpi.first.wpilibj.Timer;
 
-import org.usfirst.frc.team948.robot.RobotMap;
+import org.usfirst.frc.team948.subsytems.Drive;
 
 public class AutoDriveStrait extends Command {
 	
