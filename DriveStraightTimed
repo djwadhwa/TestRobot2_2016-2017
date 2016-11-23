@@ -1,32 +1,39 @@
 package org.usfirst.frc.team948.robot.commands;
 
-import org.usfirst.frc.team948.robot.Robot;
-
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class RawDriveStraight extends Command {
-	private int leftPower;
-	private int rightPower;
+public class DriveStraightTimed extends Command {
+	private double time;
+	private double currentTime;
+	private double power;
+	Timer timer = new Timer();
 
-    public RawDriveStraight(int leftPower, int rightPower, int initHeading, int finalHeading) {
+    public DriveStraightTimed(double time, double power) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drive);
-    	this.leftPower = leftPower;
-    	this.rightPower = rightPower;
-    	
+    	this.time = time;
+    	this.power = power;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	drive.rawStop();
+    	timer.reset();
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.rawTankDrive(leftPower, rightPower);
+    	double remainingTime = time - timer.get();
+    	double newPower = power;
+    	if(remainingTime <= 1){
+    		newPower = newPower * remainingTime;
+    	}
+    	drive.rawTankDrive(newPower, newPower)
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,6 +43,7 @@ public class RawDriveStraight extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	timer.stop();
     }
 
     // Called when another command which requires one or more of the same
