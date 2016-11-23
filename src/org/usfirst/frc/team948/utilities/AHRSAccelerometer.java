@@ -2,11 +2,13 @@ package org.usfirst.frc.team948.utilities;
 
 import org.usfirst.frc.team948.robot.RobotMap;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 
 public class AHRSAccelerometer implements Accelerometer {
 	
-	private AHRS ahrs = RobotMap.robotAHRS;
+	private AHRS ahrs = null;
 	
 	public AHRSAccelerometer(){};
 	
@@ -23,5 +25,11 @@ public class AHRSAccelerometer implements Accelerometer {
 	@Override
 	public double getZ() {	
 		return ahrs.getWorldLinearAccelZ();
+	}
+
+	@Override
+	public void setRange(Range range) {
+		// TODO Auto-generated method stub
+		
 	}
 }

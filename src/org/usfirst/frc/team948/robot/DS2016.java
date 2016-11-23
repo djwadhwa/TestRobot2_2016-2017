@@ -1,6 +1,11 @@
 package org.usfirst.frc.team948.robot;
 
+import org.usfirst.frc.team948.robot.commands.DriveStraight;
+import org.usfirst.frc.team948.robot.commands.ManualDrive;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -35,6 +40,13 @@ public class DS2016 {
     // button.whenReleased(new ExampleCommand());
 	public static Joystick leftJS= new Joystick (0);
 	public static Joystick rightJS = new Joystick (1);
+	public static Button rightTrigger = new JoystickButton(rightJS, 1);
 	
+	public static void buttonInit()
+	{
+		rightTrigger.whenPressed(new DriveStraight());
+		rightTrigger.whenReleased(new ManualDrive());
+		//rightTrigger.whileHeld(command);
+	}
 }
 

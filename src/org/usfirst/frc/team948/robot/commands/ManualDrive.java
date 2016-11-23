@@ -1,6 +1,7 @@
 package org.usfirst.frc.team948.robot.commands;
 
 import org.usfirst.frc.team948.robot.DS2016;
+import org.usfirst.frc.team948.utilities.MathUtilities;
 
 public class ManualDrive extends CommandBase {
 	public ManualDrive() {
@@ -14,8 +15,10 @@ public class ManualDrive extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		drive.rawTankDrive(DS2016.leftJS.getY(), DS2016.rightJS.getY());
-
+		double leftPower = MathUtilities.deadband(DS2016.leftJS.getY(), .2);
+		double rightPower = MathUtilities.deadband(DS2016.rightJS.getY(), .2);
+		
+		drive.rawTankDrive(leftPower, rightPower);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

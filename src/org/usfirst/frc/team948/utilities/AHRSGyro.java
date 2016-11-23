@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.PIDSource;
 
 public class AHRSGyro extends GyroBase implements Gyro, PIDSource{
 	
-	private static AHRS ahrs = RobotMap.robotAHRS;
-	private double previosAngle;
+	private static AHRS ahrs = null;
+	private double previousAngle;
 	private double currentAngle;
 	
 	public AHRSGyro(){
-		previosAngle = ahrs.getYaw() < 0 ? (180 - ahrs.getYaw())%360 : ahrs.getYaw();
+		previousAngle = ahrs.getYaw() < 0 ? (180 - ahrs.getYaw())%360 : ahrs.getYaw();
 	}
 	
 	@Override
@@ -30,8 +30,8 @@ public class AHRSGyro extends GyroBase implements Gyro, PIDSource{
 	@Override
 	public double getAngle(){
 		currentAngle = ahrs.getYaw() < 0 ? (180 - ahrs.getYaw())%360 : ahrs.getYaw();
-		double out = currentAngle - previosAngle;
-		previosAngle = currentAngle;
+		double out = currentAngle - previousAngle;
+		previousAngle = currentAngle;
 		return out;
 	}
 	
@@ -43,8 +43,8 @@ public class AHRSGyro extends GyroBase implements Gyro, PIDSource{
 	@Override
 	public void reset() {
 		ahrs.zeroYaw();
-		currentAngle = ahrs.getYaw() < 0 ? (180 - ahrs.getYaw())%360 : ahrs.getYaw();
-		previosAngle = currentAngle;
+		currentAngle = ahrs.getAngle();
+		previousAngle = currentAngle;
 	}
 	
 	@Override

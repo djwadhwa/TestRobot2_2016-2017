@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
 		oi = new DS2016();
 		chooser = new SendableChooser();
 		SmartDashboard.putData("Auto mode", chooser);
+		DS2016.buttonInit();
 	}
 
 	/**
@@ -46,6 +47,7 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void disabledPeriodic() {
+		periodicAll();
 		Scheduler.getInstance().run();
 	}
 
@@ -79,6 +81,7 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during autonomous
 	 */
 	public void autonomousPeriodic() {
+		periodicAll();
 		Scheduler.getInstance().run();
 	}
 
@@ -95,6 +98,7 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control
 	 */
 	public void teleopPeriodic() {
+		periodicAll();
 		Scheduler.getInstance().run();
 	}
 
@@ -104,4 +108,47 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
+	public void periodicAll()
+	{
+		SmartDashboard.putData("reset encoders", new Command(){
+
+				@Override
+				protected void initialize() {
+					// TODO Auto-generated method stub
+					
+				}
+	
+				@Override
+				protected void execute() {
+					// TODO Auto-generated method stub
+					RobotMap.leftEncoder.reset();
+					RobotMap.rightEncoder.reset();
+				}
+	
+				@Override
+				protected boolean isFinished() {
+					// TODO Auto-generated method stub
+					return true;
+				}
+	
+				@Override
+				protected void end() {
+					// TODO Auto-generated method stub
+					
+				}
+	
+				@Override
+				protected void interrupted() {
+					// TODO Auto-generated method stub
+					end();
+				}
+			});
+		SmartDashboard.putNumber("Left Drive Encoder", RobotMap.leftEncoder.get());
+		SmartDashboard.putNumber("Right Drive Encoder", RobotMap.rightEncoder.get());
+		
+		SmartDashboard.putNumber("Left Joystick Y", DS2016.leftJS.getY());
+		SmartDashboard.putNumber("Right Joystick Y", DS2016.rightJS.getY());
+		SmartDashboard.putNumber("gyro angle", RobotMap.continuousGyro.getAngle());
+	}
+
 }

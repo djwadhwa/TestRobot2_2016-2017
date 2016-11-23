@@ -1,12 +1,14 @@
 package org.usfirst.frc.team948.robot;
 
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.Encoder;
+import org.usfirst.frc.team948.utilities.AHRSAccelerometer;
+import org.usfirst.frc.team948.utilities.AHRSGyro;
+import org.usfirst.frc.team948.utilities.ContinuousGyro;
 
 import com.kauailabs.navx.frc.AHRS;
 
-import org.usfirst.frc.team948.utilities.AHRSGyro;
-import org.usfirst.frc.team948.utilities.AHRSAccelerometer;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Victor;
 
 
 /**
@@ -31,9 +33,10 @@ public class RobotMap {
 	public static Victor backRightMotor = new Victor(1);
 	public static Victor frontRightMotor = new Victor(0);
 	
-	public static AHRS robotAHRS = new AHRS(SPI.Port.kMXP);
-	public static AHRSGyro robotGyro = new AHRSGyro();
-	public static AHRSAccelerometer robotAccelerometer = new AHRSAccelerometer();
+	public static ContinuousGyro continuousGyro = new ContinuousGyro(SPI.Port.kMXP);
+//	public static AHRS robotAHRS = new AHRS(SPI.Port.kMXP);
+//	public static AHRSGyro robotGyro = new AHRSGyro();
+//	public static AHRSAccelerometer robotAccelerometer = new AHRSAccelerometer();
 	
 	//To check values
 	public static Encoder rightEncoder = new Encoder(2,3);
