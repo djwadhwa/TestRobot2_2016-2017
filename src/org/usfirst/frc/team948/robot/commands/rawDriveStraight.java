@@ -7,14 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RawDriveStraight extends CommandBase {
+public class RawDriveStraight extends Command {
 	private int leftPower;
 	private int rightPower;
 
     public RawDriveStraight(int leftPower, int rightPower, int initHeading, int finalHeading) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(drive);
+    	requires(Robot.drive);
     	this.leftPower = leftPower;
     	this.rightPower = rightPower;
     	
@@ -26,7 +26,7 @@ public class RawDriveStraight extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	drive.rawTankDrive(leftPower, rightPower);
+    	Robot.drive.rawTankDrive(leftPower, rightPower);
     }
 
     // Make this return true when this Command no longer needs to run execute()
