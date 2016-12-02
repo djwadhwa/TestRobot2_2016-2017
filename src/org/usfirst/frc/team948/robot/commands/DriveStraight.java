@@ -7,22 +7,22 @@ import org.usfirst.frc.team948.utilities.MathUtilities;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveStraight extends Command{
+public class DriveStraight extends CommandBase{
 	
 	public DriveStraight() {
-		requires(Robot.drive);
+		requires(drive);
 	}
 	
 	@Override
 	protected void initialize() {
 		double heading = RobotMap.continuousGyro.getAngle();
-		Robot.drive.driveOnHeadingInit(heading);
+		drive.driveOnHeadingInit(heading);
 	}
 
 	@Override
 	protected void execute() {
 		double power = MathUtilities.deadband(DS2016.rightJS.getY(), .2);
-		Robot.drive.driveOnHeading(power);
+		drive.driveOnHeading(power);
 		System.out.println("execute");
 	}
 
@@ -34,7 +34,7 @@ public class DriveStraight extends Command{
 
 	@Override
 	protected void end() {
-		Robot.drive.driveOnHeadingEnd();
+		drive.driveOnHeadingEnd();
 	}
 
 	@Override
