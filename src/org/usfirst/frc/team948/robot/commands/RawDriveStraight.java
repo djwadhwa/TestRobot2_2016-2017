@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class rawDriveStraight extends CommandBase {
+public class RawDriveStraight extends CommandBase {
 	private int leftPower;
 	private int rightPower;
 
