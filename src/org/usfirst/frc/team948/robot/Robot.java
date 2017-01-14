@@ -3,6 +3,7 @@ package org.usfirst.frc.team948.robot;
 
 import org.usfirst.frc.team948.robot.subsystems.Drive;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,6 +32,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void robotInit() {
 		oi = new DS2016();
+		CameraServer.getInstance().startAutomaticCapture();
 		chooser = new SendableChooser();
 		SmartDashboard.putData("Auto mode", chooser);
 		DS2016.buttonInit();
